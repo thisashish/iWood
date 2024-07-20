@@ -15,6 +15,7 @@ export const Colors = {
     secondary: '#1F1F1F',
     accent: '#BB86FC',
     white: '#FFFFFF',
+  
     // white:'hwb(0, 0%, 100%)',
     grey: '#A3A3A3',
     semiTransparent: 'rgba(0, 0, 0, 0.5)',

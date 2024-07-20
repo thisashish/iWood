@@ -31,17 +31,20 @@ const ProfilePage = () => {
                 <View style={styles.profileContainer}>
                     <Image source={require('../assets/images/profile/profile.png')} style={styles.profileLarge} />
                     <View style={styles.profileButtons}>
-                        <TouchableOpacity style={[styles.button, styles.transparentButton]}>
-                            <Text style={styles.buttonText}>+Follow</Text>
+                    
+                        <TouchableOpacity style={[styles.button, styles.transparentButton,selectedButton === '+Follow' ? styles.selectedButton : null]}onPress={() => handleButtonPress('+Follow')} >
+                            <Text style={[styles.buttonText,selectedButton === '+Follow' ? styles.selectedButtonText : null]} >+Follow</Text>
+                            
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button, styles.transparentButton]}>
-                            <Text style={styles.buttonText}>Message</Text>
+                        <TouchableOpacity style={[styles.button, styles.transparentButton,selectedButton === 'Message' ? styles.selectedButton : null]}onPress={() => handleButtonPress('Message')}>
+                            <Text style={[styles.buttonText,selectedButton === 'Message' ? styles.selectedButtonText : null]}>Message</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button, styles.transparentButton]}>
-                            <Text style={styles.buttonText}>Connect</Text>
+                        <TouchableOpacity style={[styles.button, styles.transparentButton,selectedButton === 'Connect' ? styles.selectedButton : null]}onPress={() => handleButtonPress('Connect')}>
+                            <Text style={[styles.buttonText,selectedButton === 'Connect' ? styles.selectedButtonText : null]}>Connect</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button, styles.transparentButton]}>
-                            <MaterialCommunityIcons name="dots-vertical" size={24} color={Colors.white} />
+                        <TouchableOpacity style={[styles.button, styles.transparentButton,styles.transparentButton,selectedButton === 'dots-vertical' ? styles.selectedButton : null]}onPress={() => handleButtonPress('dots-vertical')}>
+                            <MaterialCommunityIcons name="dots-vertical" size={24} color={Colors.grey} />
+                           
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -219,7 +222,7 @@ const styles = StyleSheet.create({
     },
     profileBio: {
         textAlign: 'left',
-        color: Colors.white,
+        color: Colors.grey,
         marginTop: 10,
     },
     profileLink: {
@@ -239,7 +242,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 3,
     },
     buttonText: {
-        color: Colors.white,
+        color: Colors.grey,
         fontSize: 8,
         textAlign:'center',
         justifyContent:'center',
@@ -247,7 +250,7 @@ const styles = StyleSheet.create({
     },
     transparentButton: {
         backgroundColor: 'transparent',
-        borderColor: Colors.white,
+        borderColor: Colors.secondary,
     },
     socialMediaSection: {
         flexDirection: 'row',
@@ -310,11 +313,11 @@ const styles = StyleSheet.create({
     },
     portfolioButton: {
         paddingVertical: 5,
-        paddingHorizontal: 5,
+        paddingHorizontal: 10,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: Colors.white,
-        margin: 7,
+        borderColor: Colors.secondary,
+        marginHorizontal: 5,
         padding:5,   
     },
     selectedButton: {
@@ -323,6 +326,7 @@ const styles = StyleSheet.create({
     selectedButtonText: {
         color: Colors.primary,
     },
+    
     imageGrid: {
         flexDirection: 'row',
         flexWrap: 'wrap',

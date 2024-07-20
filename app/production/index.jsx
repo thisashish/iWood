@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     },
     topRightIcons: {
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'centre',
     },
     profileSmall: {
         width: 30,
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     },
     profileBio: {
         textAlign: 'left',
-        color: Colors.white,
+        color: Colors.grey,
         marginTop: 10,
         fontSize:10
     },
@@ -243,11 +243,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     transparentButton: {
-        borderColor: Colors.white,
+        borderColor: Colors.secondary,
         borderWidth: 1,
     },
     buttonText: {
-        color: Colors.white,
+        color: Colors.grey,
         fontSize: 12,
     },
     socialMediaIcon: {
@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
         color: Colors.white,
     },
     socialMediaSubText: {
-        fontSize: 12,
+        fontSize: 15,
         color: Colors.white,
     },
     separator: {
@@ -295,18 +295,20 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     portfolioButton: {
+        
         paddingVertical: 5,
         paddingHorizontal: 10,
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: Colors.white,
+        borderColor: Colors.secondary,
         marginHorizontal: 5,
     },
     selectedButton: {
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
     },
     selectedButtonText: {
-        color: Colors.black,
+
+        color: Colors.white,
     },
     imageGrid: {
         flexDirection: 'row',
