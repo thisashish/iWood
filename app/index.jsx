@@ -6,7 +6,7 @@ import LifestylePage from './(lifestyle)/index';
 import BeautyPage  from './(beauty)';
 import ProfilePage from './profile/index';
 import ProductionPage from './production/index';
-
+import ReelPage from './(reelpage)/index'; 
 
 // const Stack = createStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -20,7 +20,7 @@ const App = () => {
         <Stack.Screen name="Beauty" component={BeautyPage} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={ProfilePage} options={{ headerShown: false }} />
         <Stack.Screen name="Production" component={ProductionPage} options={{headerShown:false}}/>
-        
+        <Stack.Screen name="ReelPage" component={ReelPage} options={{headerShown:false}}/>
       </Stack.Navigator>
     // </NavigationContainer>
   );

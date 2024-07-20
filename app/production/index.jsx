@@ -9,9 +9,21 @@ const ProductionPage = () => {
     const navigation = useNavigation();
     const [selectedButton, setSelectedButton] = React.useState(null);
 
+    // const handleButtonPress = (button) => {
+    //     setSelectedButton(button);
+    // };
+
     const handleButtonPress = (button) => {
         setSelectedButton(button);
+        // Navigate to ReelPage when 'Brands' button is pressed
+        if (button === 'Brands') {
+            navigation.navigate('ReelPage');
+        }
     };
+    
+    // const handleClickPress = () => {
+    //     navigation.navigate('ReelPage');
+    // };
 
     return (
         <ScrollView style={styles.container}>
@@ -36,8 +48,8 @@ const ProductionPage = () => {
             <View style={styles.profileDetails}>
                 <Text style={styles.profileName}>CD Production House</Text>
                 <Text style={styles.profileBio}>
-                Photoshoot | Series | Modeling | Fashion | Drama
-                    {/* Cosmo | Model | Jewelry | Fashion{'\n'} */}
+                    Photoshoot | Series | Modeling | Fashion | Drama
+                  
                 </Text>
                 <Text style={styles.profileLink}>www.userlink.com</Text>
 
@@ -87,7 +99,7 @@ const ProductionPage = () => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>My Portfolio</Text>
                 <View style={styles.buttonRow}>
-                    <TouchableOpacity
+                <TouchableOpacity
                         style={[
                             styles.portfolioButton,
                             selectedButton === 'Brands' ? styles.selectedButton : null,
@@ -134,6 +146,8 @@ const ProductionPage = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.imageGrid}>
+             
+                
                     <Image source={require('../assets/images/production/team1.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team2.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team3.png')} style={styles.gridImage} />
@@ -142,7 +156,7 @@ const ProductionPage = () => {
                     <Image source={require('../assets/images/production/team6.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team7.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team8.png')} style={styles.gridImage} />
-                   
+
                 </View>
             </View>
         </ScrollView>
@@ -218,7 +232,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: Colors.white,
         marginTop: 10,
-        fontSize:10
+        fontSize: 10
     },
     profileLink: {
         color: Colors.blue,
