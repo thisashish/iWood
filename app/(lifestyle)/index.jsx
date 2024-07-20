@@ -10,7 +10,7 @@ const LifestylePage = () => {
   const navigation = useNavigation();
   const [selectedButton, setSelectedButton] = useState(null);
   const [seeMore, setSeeMore] = useState({
-    Beauty: false,
+    Beauty: true,
     Gaming: false,
     Parenting: false,
     Animals: false,
