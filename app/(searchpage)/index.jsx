@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import { GStyle } from '../components/styles/Global'; // Ensure GStyle is correctly imported
-import { Colors } from '../components/styles/Colours'; // Ensure Colors is correctly imported
+import { GStyle } from '../components/styles/Global';
+import { Colors } from '../components/styles/Colours';
 import { useNavigation } from '@react-navigation/native';
 import Group20Image from '../assets/images/Group 20.png';
 import Group18Image from '../assets/images/Group 18.png';
 import RectangleImage from '../assets/images/Rectangle.png';
+import Entypo from '@expo/vector-icons/Entypo';
 
 
 
@@ -23,12 +24,16 @@ const SearchPage = () => {
     setShowSortOptions(false);
   };
 
+
+
   const renderSection = (title, seeMore, images, imageStyle) => (
     <View style={GStyle.sectionContainer}>
       <View style={GStyle.sectionHeader}>
         <Text style={GStyle.sectionTitle}>{title}</Text>
         <TouchableOpacity>
-          <Text style={GStyle.sectionSeeMore}>{seeMore}</Text>
+          <Text style={GStyle.sectionSeeMore}>{seeMore}
+          <Entypo name="chevron-small-down"  />
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={GStyle.imageContainer}>
@@ -40,7 +45,7 @@ const SearchPage = () => {
               <View style={GStyle.imageFooter}>
                 <Image source={image.profileUri} style={GStyle.profileImage} />
                 <View>
-                  <Text style={GStyle.profileName}>Ayushi Chorsey</Text>
+                  <Text style={GStyle.profileName}>{image.name}</Text>
                   <Text style={GStyle.profileFollowers}>{image.followers}</Text>
                 </View>
               </View>
@@ -57,13 +62,13 @@ const SearchPage = () => {
     <ScrollView style={[GStyle.container, { backgroundColor: Colors.dark.background }]}>
       <View style={[GStyle.container, GStyle.paddingMd]}>
         <View style={styles.searchBar}>
-          <FontAwesome name="search" size={24} color="white" />
+          <FontAwesome name="search" size={24} color={Colors.grey} />
           <TextInput
             placeholder="Search Influencer and agency"
             style={styles.searchInput}
-            placeholderTextColor="#fff"
+            placeholderTextColor='#d3d3d3'
           />
-          <FontAwesome name="microphone" size={24} color="white" style={styles.micIcon} />
+          <FontAwesome name="microphone" size={24} color={Colors.grey} style={styles.micIcon} />
         </View>
 
         <View style={styles.buttonContainer}>
@@ -97,9 +102,9 @@ const SearchPage = () => {
             onPress={() => setShowSortOptions(!showSortOptions)}
           >
             <FontAwesome name="sort" size={16} color="white" />
-            <Text style={styles.filterButtonText}>Sort</Text>
+            <Text style={styles.filterButtonText}>Sort   <Entypo name="chevron-small-down"  /></Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={[
               styles.button,
@@ -134,77 +139,51 @@ const SearchPage = () => {
         )}
 
 
-        {/* <View style={styles.filterButtonContainer}>
-          <TouchableOpacity style={styles.filterButton}>
-            <FontAwesome name="sort" size={16} color="white" />
-            <Text style={styles.filterButtonText}>Sort</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterButtonText}>Lifestyle</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterButtonText}>Fashion</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterButtonText}>Food</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.filterButton}>
-            <Text style={styles.filterButtonText}>Sports</Text>
-          </TouchableOpacity>
-        </View> */}
-
-
-
-        {/* Render your sections */}
         {renderSection(
           'Lifestyle Influencer',
           'See More',
           [
             {
               uri: Group20Image,
-              profileUri: 'https://example.com/profile1.jpg',
+              profileUri: require('../assets/images/profile.png'),
               name: 'John Doe',
-              followers: '1.2M',
+              followers: '1.23k Followers',
             },
             {
               uri: Group18Image,
-              profileUri: 'https://example.com/profile2.jpg',
+              profileUri: require('../assets/images/profile.png'),
               name: 'Jane Doe',
-              followers: '900K',
+              followers: '1.23k Followers',
             },
             {
               uri: RectangleImage,
-              profileUri: 'https://example.com/profile3.jpg',
+              profileUri: require('../assets/images/profile.png'),
               name: 'Alex Smith',
-              followers: '500K',
+              followers: '1.23k Followers',
             },
           ],
-          styles.rowImage // Ensure GStyle.tallImage is correctly defined
+          styles.rowImage
         )}
 
         {renderSection(
           'Influencer Work With Brand',
           'See More',
           [
-            {
-              uri: require('../assets/images/Brand1.png'),
-              name: 'Brand Name',
-              followers: '40+M',
-            },
-            {
-              uri: require('../assets/images/Brand2.png'),
-              name: 'Brand Name',
-              followers: '50+M',
-            },
-            {
-              uri: require('../assets/images/Brand3.png'),
-              name: 'Brand Name',
-              followers: '31+M',
-            },
+            { uri: require('../assets/images/Brand1.png') },
+            { uri: require('../assets/images/Brand2.png') },
+            { uri: require('../assets/images/Brand3.png') },
           ],
           GStyle.squareImage,
-          { backgroundColor: Colors.primary }
+          (image) => (
+            <View style={{ flex: 1 }}>
+              <Image source={image.uri} style={GStyle.squareImage} />
+              <View style={styles.brandNameContainer}>
+                <Text style={styles.brandNameText}>Brand Name</Text>
+              </View>
+            </View>
+          )
         )}
+
 
         {renderSection(
           'Fashion Related Influencer',
@@ -226,12 +205,12 @@ const SearchPage = () => {
               textRight: '14k',
             },
           ],
-          styles.rowImage, // Ensure GStyle.tallImage is correctly defined
+          styles.rowImage, 
           { marginBottom: 0 },
-          true // showOverlay set to true
+          true 
         )}
 
-        {/* Travel Influencer Section */}
+        
         <View style={styles.travelInfluencerSection}>
           <View style={styles.header}>
             <Text style={styles.travelInfluencerText}>Travel Influencer</Text>
@@ -575,15 +554,15 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: '#36454F',
     paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingVertical: 8,
     marginTop: 20,
     marginBottom: 10,
     marginHorizontal: 10,
     borderWidth: 1,
-    borderColor: Colors.grey,
-    borderRadius: 5,
+    // borderColor: Colors.grey,
+    borderRadius: 8,
   },
   searchInput: {
     flex: 1,
@@ -706,7 +685,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 5,
-    borderColor: Colors.white,
+    borderColor: Colors.grey,
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
@@ -736,6 +715,19 @@ const styles = StyleSheet.create({
   sortOptionText: {
     color: Colors.white,
     fontSize: 14,
+  },
+
+  brandNameContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    backgroundColor: Colors.primary,
+    alignItems: 'center',
+    padding: 5,
+  },
+  brandNameText: {
+    color: Colors.white,
+    fontWeight: 'bold',
   },
 
 });

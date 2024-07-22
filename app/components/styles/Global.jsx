@@ -53,6 +53,11 @@ sectionContainer: {
   backgroundColor: Colors.primary, 
   
 },
+squareImage: {
+  width: 100, // Adjust the width as needed
+  height: 100, // Same as width to keep it square
+  borderRadius: 8, // Optional: Adjust the border radius if you want rounded corners
+},
 
 // Header of each section containing the title and see more button
 sectionHeader: {
@@ -72,7 +77,7 @@ sectionTitle: {
 // // 'See More' text in the section header
 sectionSeeMore: {
   fontSize: 14,
-  color: Colors.white, // Replace with your desired color
+  color: '#949494' // Replace with your desired color
 },
 
 // // Container for the images

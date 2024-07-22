@@ -1,29 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { GStyle } from '../components/styles/Global';
 import { Colors } from '../components/styles/Colours';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 const ProductionPage = () => {
     const navigation = useNavigation();
-    const [selectedButton, setSelectedButton] = React.useState(null);
-
-    // const handleButtonPress = (button) => {
-    //     setSelectedButton(button);
-    // };
+    const [selectedButton, setSelectedButton] = useState(null);
 
     const handleButtonPress = (button) => {
         setSelectedButton(button);
-        // Navigate to ReelPage when 'Brands' button is pressed
         if (button === 'Brands') {
             navigation.navigate('ReelPage');
         }
     };
-    
-    // const handleClickPress = () => {
-    //     navigation.navigate('ReelPage');
-    // };
 
     return (
         <ScrollView style={styles.container}>
@@ -49,7 +40,6 @@ const ProductionPage = () => {
                 <Text style={styles.profileName}>CD Production House</Text>
                 <Text style={styles.profileBio}>
                     Photoshoot | Series | Modeling | Fashion | Drama
-                  
                 </Text>
                 <Text style={styles.profileLink}>www.userlink.com</Text>
 
@@ -67,13 +57,13 @@ const ProductionPage = () => {
                             <FontAwesome name="search" size={24} color={Colors.white} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.iconButton}>
-                            <Image source={require('../assets/images/profile/Facebook.png')} size={24} style={styles.socialMediaIcon} />
+                            <Image source={require('../assets/images/profile/Facebook.png')} style={styles.socialMediaIcon} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.iconButton}>
                             <Image source={require('../assets/images/profile/twitter_icon.png')} style={styles.socialMediaIcon} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.iconButton}>
-                            <Image source={require('../assets/images/profile/youtube_icon.png')} size={24} style={styles.socialMediaIcon} />
+                            <Image source={require('../assets/images/profile/youtube_icon.png')} style={styles.socialMediaIcon} />
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -99,7 +89,7 @@ const ProductionPage = () => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>My Portfolio</Text>
                 <View style={styles.buttonRow}>
-                <TouchableOpacity
+                    <TouchableOpacity
                         style={[
                             styles.portfolioButton,
                             selectedButton === 'Brands' ? styles.selectedButton : null,
@@ -146,8 +136,6 @@ const ProductionPage = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.imageGrid}>
-             
-                
                     <Image source={require('../assets/images/production/team1.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team2.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team3.png')} style={styles.gridImage} />
@@ -156,7 +144,6 @@ const ProductionPage = () => {
                     <Image source={require('../assets/images/production/team6.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team7.png')} style={styles.gridImage} />
                     <Image source={require('../assets/images/production/team8.png')} style={styles.gridImage} />
-
                 </View>
             </View>
         </ScrollView>
@@ -189,7 +176,7 @@ const styles = StyleSheet.create({
     },
     topRightIcons: {
         flexDirection: 'row',
-        alignItems: 'centre',
+        alignItems: 'center',
     },
     profileSmall: {
         width: 30,
@@ -232,7 +219,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         color: Colors.grey,
         marginTop: 10,
-        fontSize: 10
+        fontSize: 10,
     },
     profileLink: {
         color: Colors.blue,
@@ -309,7 +296,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     portfolioButton: {
-        
         paddingVertical: 5,
         paddingHorizontal: 10,
         borderRadius: 5,
@@ -321,7 +307,6 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.blue,
     },
     selectedButtonText: {
-
         color: Colors.white,
     },
     imageGrid: {
